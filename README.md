@@ -20,7 +20,7 @@ Shows SSH_AGENT_PID and SSH_AUTH_SOCK environment variables
 
 Run any tool directly from the terminal:
 ```bash
-$: tb <tool-name>.tool
+$: tb <tool-name>
 ```
 The command reads your bash.toolbox file and prints the selected block.
 
@@ -37,7 +37,7 @@ tb() {
     local TOOLBOX="${XDG_DATA_HOME:-$HOME/.local/share}/toolbox/bash.toolbox"
 
     if [[ -f "$TOOLBOX" ]]; then
-        awk "/^#@ $TOOL/,/^@#/" "$TOOLBOX"
+        awk "/#@ $TOOL.tool/,/@#/" "$TOOLBOX"
     else
         echo "Toolbox not found at: $TOOLBOX"
     fi
