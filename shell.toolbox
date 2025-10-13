@@ -11,7 +11,7 @@
 
 #@ <tool-name>.tool
 #t <tags>
-#c <optional: cmd-description>
+#d <optional: description>
 <commands>
 #n
 - <notes>
@@ -21,9 +21,19 @@
 # END TEMPLATE 
 ############################
 
+
+#@ ebook-convert.tool
+#t macos epub ebook convert calibre pdf conversion brew
+#d convert pdf-to-epub
+ebook-convert <book.pdf> <new-book.epub>
+#n
+- ebook-convert is a calibre cli tool, calibre must be installed 
+<- notes>
+@#
+
 #@ git.tool
-#t bootstrap git repo + commit styling
-#c launch repo
+#t git repo commit
+#d launch repo
 git init
 git remote add origin <url>
 git add --all             
@@ -40,7 +50,7 @@ git push -u origin main
 
 #@ ssh.tool
 #t keygen ssh agent
-#c create key & add to keyring
+#d create key & add to keyring
 ssh-keygen -t ed25519 -f <hostname>
 ssh-agent -s
 ssh-add $HOME/.ssh/<private_key>
