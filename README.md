@@ -5,11 +5,12 @@ A plain-text command-line toolbox for storing commands, notes, and output in sel
 Each tool block is written like this:
 ```bash
 #@ ssh.tool
-## keygen ssh agent
+#t keygen ssh agent
+#c create and add key to ring
 ssh-keygen -t ed25519 -f <hostname>
 ssh-agent -s
 ssh-add $HOME/.ssh/<private_key>
-#>
+#n
 1) Create the key
 2) Start ssh-agent with -s so env vars export
 3) Add key to keyring

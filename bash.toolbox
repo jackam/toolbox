@@ -22,15 +22,15 @@
 ############################
 
 #@ git.tool
-## bootstrap git repo + commit styling
-# launch repo
+#t bootstrap git repo + commit styling
+#c launch repo
 git init
 git remote add origin <url>
 git add --all             
 git commit -m "Initial commit"
 git branch -M main
 git push -u origin main
-# commit style
+#n commit style
 +  -> added / new feature / new tool
 ~  -> modified / updated / tweaked / improved
 -  -> removed / cleaned / deprecated
@@ -39,12 +39,12 @@ git push -u origin main
 @#
 
 #@ ssh.tool
-## keygen ssh agent
-# create key & add to keyring
+#t keygen ssh agent
+#c create key & add to keyring
 ssh-keygen -t ed25519 -f <hostname>
 ssh-agent -s
 ssh-add $HOME/.ssh/<private_key>
-#>
+#n
 - start ssh-agent with -s so env vars export
 @#
 
