@@ -3,6 +3,9 @@
 
 # file: bash.toolbox
 # author: jackam@github
+# description: searchable toolbox for CLI commands 
+
+# example: awk '/#@ ssh.tool/,/@#/' "${PWD}/bash.toolbox "
 
 #@ ssh.tool
 ## keygen ssh agent
@@ -15,4 +18,5 @@ ssh-add $HOME/.ssh/<private_key>
 3) Add key to keyring
 Shows SSH_AGENT_PID and SSH_AUTH_SOCK environment variables
 @#
+
 
