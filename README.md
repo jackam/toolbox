@@ -1,4 +1,4 @@
-#Toolbox
+# Toolbox
 
 A plain-text command-line toolbox for storing commands, notes, and output in self-contained, searchable blocks.
 
@@ -16,7 +16,7 @@ ssh-add $HOME/.ssh/<private_key>
 Shows SSH_AGENT_PID and SSH_AUTH_SOCK environment variables
 @#
 ```
-#Usage
+# Usage
 
 Run any tool directly from the terminal:
 ```bash
@@ -24,7 +24,7 @@ $: tb <tool-name>.tool
 ```
 The command reads your bash.toolbox file and prints the selected block.
 
-#Example .bashrc function
+# Example .bashrc function
 ```bash
 tb() {
     if [[ -z "$1" ]]; then
@@ -59,7 +59,7 @@ spinner() {
 }
 ```
 
-#Notes
+# Notes
 - The toolbox file defaults to:
  `$: ${XDG_DATA_HOME:-$HOME/.local/share}/toolbox/bash.toolbox`
 - Each tool block starts with `#@ <tool>.tool` and ends with `@#`
