@@ -1,13 +1,18 @@
 
 
 
-#1 ssh.tool
-## keygen
+# file: bash.toolbox
+# author: jackam@github
+
+#@ ssh.tool
+## keygen ssh agent
 ssh-keygen -t ed25519 -f <hostname>
 ssh-agent -s
-ssh-add $home/.ssh/<private_key>
-# {
-1) create the key
-2) start ssh agent with -s flag so environment variables get exported to the shell -- SSH_AGENT_SOCK, SSH_AGENT_PID, etc.
-3) add the key to the keyring
-# }
+ssh-add $HOME/.ssh/<private_key>
+#>
+1) Create the key
+2) Start ssh-agent with -s so env vars export
+3) Add key to keyring
+Shows SSH_AGENT_PID and SSH_AUTH_SOCK environment variables
+@#
+
