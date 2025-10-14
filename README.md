@@ -33,7 +33,6 @@ tb() {
         return 1
     fi
 
-    spinner
     local TOOL="$1"
     local TOOLBOX="${XDG_DATA_HOME:-$HOME/.local/share}/toolbox/bash.toolbox"
 
@@ -42,23 +41,8 @@ tb() {
     else
         echo "Toolbox not found at: $TOOLBOX"
     fi
-
-    echo
-    echo "[+] ^^^"
-    echo
 }
 
-spinner() {
-    local spinarr=('/' '-' '\' '|')
-    local delay=0.1
-    for i in $(seq 1 30); do
-        printf "\r[%s] Searching toolbox" "${spinarr[$((i % 4))]}"
-        sleep "$delay"
-    done
-    printf "\r                     \n"
-    printf "[+] ^^^ Toolbox\n\n"
-}
-```
 
 # Notes
 - The toolbox file defaults to:

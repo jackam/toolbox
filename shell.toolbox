@@ -28,7 +28,6 @@
 ebook-convert <book.pdf> <new-book.epub>
 #n
 - ebook-convert is a calibre cli tool, calibre must be installed 
-<- notes>
 @#
 
 #@ git.tool
@@ -45,7 +44,6 @@ git push -u origin main
 ~  -> modified / updated / tweaked / improved
 -  -> removed / cleaned / deprecated
 *  -> documentation / notes / context / metadata
-#>
 @#
 
 #@ ssh.tool
