@@ -14,7 +14,6 @@ ssh-add $HOME/.ssh/<private_key>
 1) Create the key
 2) Start ssh-agent with -s so env vars export
 3) Add key to keyring
-Shows SSH_AGENT_PID and SSH_AUTH_SOCK environment variables
 @#
 ```
 # Usage
