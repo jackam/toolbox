@@ -20,7 +20,7 @@ tb() {
 		echo "Toolbox not found at: ${TOOLBOX}"
 		return 1
 	fi
-	awk "/#@ $TOOL.tool/,/@#/" "${TOOLBOX}"
+	awk "/^#@ $TOOL.tool/,/^@#/" "${TOOLBOX}"
 	_ui_footer
 }
 
@@ -40,10 +40,10 @@ tb.search() {
 	_ui_spinner
 	_ui_header
 	awk -v tag="${TAG}" '
-		/#@/ {inblock=0; block=""}
+		/^#@/ {inblock=0; block=""}
 		{block=block $0 "\n"}
-		/#t/ && index(tolower($0), tolower(tag)) {inblock=1}
-		/@#/ && inblock {print block}
+		/^#t/ && index(tolower($0), tolower(tag)) {inblock=1}
+		/^@#/ && inblock {print block}
 		' "${TOOLBOX}"
 	_ui_footer
 }

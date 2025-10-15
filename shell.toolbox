@@ -22,6 +22,39 @@
 ############################
 
 
+#@ awk.tool
+#t awk csv row column spreadsheet regex scan
+#d line-by-line scan: /pattern/ {action}
+# prints line matching pattern
+awk '/<pattern>/ {print}' 	
+
+awk '/#@/,/#@' <filename>
+
+awk -v tag="ssh" '
+	/#@/ {inblock=1; block=""}
+	{block=block + $0 "\n"}
+	/#t/ && index($0, tag) {inblock=1}
+	/@#/ && inblock {print block}
+' <filename> 
+#-F flag specifies field separator, $1 prints first column
+awk -F ':' '{print $1}' /etc/passwd
+
+awk '
+	/<pattern>/ {
+		while (match($0, /[0-9]+/)) {
+			print substr($0, RSTART, RLENGTH)
+			$0 = substr($0, RSTART + RLENGTH)
+		}
+	}
+' <filename>
+#n
+top level logic:
+
+for each line in file
+	if line matches pattern
+		perform action
+@#
+
 #@ ebook-convert.tool
 #t macos epub ebook convert calibre pdf conversion brew
 #d convert pdf-to-epub
@@ -47,7 +80,7 @@ git push -u origin main
 @#
 
 #@ ssh.tool
-#t keygen ssh agent
+#t key keygen ssh agent
 #d create key & add to keyring
 ssh-keygen -t ed25519 -f <hostname>
 ssh-agent -s
