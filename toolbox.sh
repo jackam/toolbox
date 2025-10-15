@@ -15,7 +15,7 @@ tb() {
 	_ui_spinner
 	_ui_header
 	local TOOL="${1}"
-	local TOOLBOX="${XDG_DATA_HOME:-$HOME/.local/share}/toolbox/shell.toolbox"
+	local TOOLBOX="${XDG_DATA_HOME:-$HOME/.local/share}/toolbox/cli.toolbox"
 	if [[ ! -f ${TOOLBOX} ]]; then
 		echo "Toolbox not found at: ${TOOLBOX}"
 		return 1
@@ -32,7 +32,7 @@ tb.search() {
 		return 1
 	fi
 	local TAG="${1}"
-	local TOOLBOX="${XDG_DATA_HOME:-$HOME/.local/share}/toolbox/shell.toolbox"
+	local TOOLBOX="${XDG_DATA_HOME:-$HOME/.local/share}/toolbox/cli.toolbox"
 	if [[ ! -f "${TOOLBOX}" ]]; then
 		echo "Toolbox not found at: ${TOOLBOX}"
 		return 1
@@ -68,7 +68,9 @@ _ui_footer() {
 	local right="^^^ [+]"
 	local total_space=$(( term_width - ${#left} - ${#right} ))
 	if (( total_space < 0 )); then total_space=0; fi
+	printf "\n"
 	printf "%s%*s%s\n" "${left}" "${total_space}" "" "${right}"
+	printf "\n"
 }
 
 # cli spinner effect for toolbox queries

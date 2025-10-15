@@ -1,7 +1,7 @@
 
 
 
-# file: bash.toolbox
+# file: cli.toolbox
 # author: jackam@github
 # description: searchable toolbox for CLI commands 
 
@@ -70,9 +70,9 @@ ebook-convert <book.pdf> <new-book.epub>
 # -i ignore case, name directory or file
 find . -iname "*toolbox*"
 
-# -type f/d for file or directory 
+# -type f/d for file or directory, -i ignore case
 find . -type f -iname "*tool*"
-find . -type d -name "*tool*"
+find . -type d -name "*Tool*"
 #n
 @#
 
