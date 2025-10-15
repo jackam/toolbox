@@ -85,6 +85,9 @@ git add --all
 git commit -m "Initial commit"
 git branch -M main
 git push -u origin main
+
+# show commit logs with branch visuals
+git log --graph
 #n commit style
 +  -> added / new feature / new tool
 ~  -> modified / updated / tweaked / improved
