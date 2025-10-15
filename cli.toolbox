@@ -92,12 +92,22 @@ git push -u origin main
 *  -> documentation / notes / context / metadata
 @#
 
+#@ grep.tool
+#t search grep 
+#d 
+grep -i "*<string>*"
+grep -i "^<string>*"
+#n
+# inception of grep by ken thompson
+- g/re/p -> global/regex/print
+@#
+
 #@ network.tool
 #t lsof netstat ifconfig net troubleshoot
 #d basic commands to isolate interface issues
 
-# -rn show routing table and numeric ip address not hostname
-netstat -rn | grep utun
+# -rn show routing table and numeric ipv4 address, not hostname
+netstat -rn -f inet | grep utun
 
 # list open files/sockets using utun
 lsof | grep "utun"
