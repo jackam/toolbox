@@ -63,6 +63,19 @@ ebook-convert <book.pdf> <new-book.epub>
 - ebook-convert is a calibre cli tool, calibre must be installed 
 @#
 
+
+#@ find.tool
+#t find search recursive
+#d 
+# -i ignore case, name directory or file
+find . -iname "*toolbox*"
+
+# -type f/d for file or directory 
+find . -type f -iname "*tool*"
+find . -type d -name "*tool*"
+#n
+@#
+
 #@ git.tool
 #t git repo commit
 #d launch repo
@@ -77,6 +90,25 @@ git push -u origin main
 ~  -> modified / updated / tweaked / improved
 -  -> removed / cleaned / deprecated
 *  -> documentation / notes / context / metadata
+@#
+
+#@ network.tool
+#t lsof netstat ifconfig net troubleshoot
+#d basic commands to isolate interface issues
+
+# -rn show routing table and numeric ip address not hostname
+netstat -rn | grep utun
+
+# list open files/sockets using utun
+lsof | grep "utun"
+
+#kill processes using utun
+killall rapportd
+killall identityservicesd
+
+#verify pids have changed for both rapportd and identityservicesd
+lsof | grep "utun"
+#n
 @#
 
 #@ ssh.tool
