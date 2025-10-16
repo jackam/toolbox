@@ -131,6 +131,18 @@ lsof | grep "utun"
 ssh-keygen -t ed25519 -f <hostname>
 eval $(ssh-agent -s)
 ssh-add $HOME/.ssh/<private_key>
+
+# remote connect into headless server
+# check/start ssh system status
+sudo systemctl status/start ssh.service
+# allow ssh connection through firewall
+sudo ufw allow ssh
+# connect to headless server's user account
+# -vvv to get detailed log
+ssh -vvv <user>@192.168.200.148
+# fetch ssh.pub file if ssh login doesn't work
+scp <user>@192.168.200.148:~/.ssh/<ssh_key>.pub ~/.ssh/<ssh_key>.pub
+
 #n
 - eval ssh-agent with -s so env vars export
 @#
