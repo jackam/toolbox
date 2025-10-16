@@ -67,8 +67,9 @@ ebook-convert <book.pdf> <new-book.epub>
 #@ find.tool
 #t find search recursive
 #d 
-# -i ignore case, name directory or file
-find . -iname "*toolbox*"
+# -i ignore case, name directory or file 
+# --> don't show access denied messages
+find . -iname "*toolbox*" 2>/dev/null
 
 # -type f/d for file or directory, -i ignore case
 find . -type f -iname "*tool*"
