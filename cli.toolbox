@@ -129,10 +129,10 @@ lsof | grep "utun"
 #t key keygen ssh agent
 #d create key & add to keyring
 ssh-keygen -t ed25519 -f <hostname>
-ssh-agent -s
+eval $(ssh-agent -s)
 ssh-add $HOME/.ssh/<private_key>
 #n
-- start ssh-agent with -s so env vars export
+- eval ssh-agent with -s so env vars export
 @#
 
 
