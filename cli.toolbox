@@ -118,8 +118,9 @@ grep -i "^<string>*"
 #@ network.tool
 #t lsof netstat ifconfig net troubleshoot
 #d basic commands to isolate interface issues
-# get a new ip address
+# release ip: set interface to BOOTP release the ip
 sudo ipconfig set en0 BOOTP
+# set interface to recieve an ip
 sudo ipconfig set en0 DHCP
 
 #flush dns
@@ -139,6 +140,7 @@ killall identityservicesd
 #verify pids have changed for both rapportd and identityservicesd
 lsof | grep "utun"
 #n
+VPN: the quickest solution for internet connectivity issues is to get a new ip address via ipconfig BOOTP -> DHCP
 @#
 
 #@ ssh.tool
