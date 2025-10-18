@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# release the ip
+# release the ip: MacOS only
 echo "Resetting IP on en0..."
 sudo ipconfig set en0 BOOTP
 sleep 4
