@@ -55,6 +55,15 @@ for each line in file
 		perform action
 @#
 
+#@ bash.tool
+#t bash cli shell
+#d quick command/syntax ref.
+# read user input
+read -p "What is your name" NAME
+#n
+- <notes>
+@#
+
 #@ ebook-convert.tool
 #t macos epub ebook convert calibre pdf conversion brew
 #d convert pdf-to-epub
@@ -109,6 +118,13 @@ grep -i "^<string>*"
 #@ network.tool
 #t lsof netstat ifconfig net troubleshoot
 #d basic commands to isolate interface issues
+# get a new ip address
+sudo ipconfig set en0 BOOTP
+sudo ipconfig set en0 DHCP
+
+#flush dns
+sudo dscacheutil - flushcache;
+sudo killall -HUP mDNSResponder
 
 # -rn show routing table and numeric ipv4 address, not hostname
 netstat -rn -f inet | grep utun
