@@ -116,7 +116,7 @@ grep -i "^<string>*"
 @#
 
 #@ network.tool
-#t lsof netstat ifconfig net troubleshoot
+#t lsof netstat ifconfig net troubleshoot network net
 #d basic commands to isolate interface issues
 # release ip: set interface to BOOTP release the ip
 sudo ipconfig set en0 BOOTP
