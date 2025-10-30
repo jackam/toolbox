@@ -146,8 +146,16 @@ VPN: the quickest solution for internet connectivity issues is to get a new ip a
 #@ ssh.tool
 #t key keygen ssh agent
 #d create key & add to keyring
+
+# macos: check the ssh serivce status
+sudo systemsetup -getremotelogin
+# macos: turn on the ssh service
+sudo systemsetup -setremotelogin on
+
+# create a key
 ssh-keygen -t ed25519 -f <hostname>
 eval $(ssh-agent -s)
+# add the key to the keyring
 ssh-add $HOME/.ssh/<private_key>
 
 # remote connect into headless server
