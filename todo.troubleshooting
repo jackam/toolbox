@@ -1,0 +1,51 @@
+	1. No Wi-Fi
+		a. Problem - Clean install, no wireless adapter detected
+		b. Establish a theory 
+			i. Hardware not recognized by Ubuntu
+			ii. Wireless driver not present (kernel module)
+				1) Driver --> the software loaded from the OS that interacts with the firmware
+			iii. Firmware is not loaded in the hardware of the wireless controller
+				1) Firmware --> the software loaded directly onto the device
+			iv. Kernel module not loaded
+			v. Adapter not support by Ubuntu (Least likely)
+		c. Test the theory
+			i. [STEPS] - Check if the components are present, then test if they are working
+				1) [ELI5] - A driver is the code to interact with the hardware, the module is the packaged component of that driver
+					a) Iwlwifi vs iwlwifi.ko 
+			ii. Phase 1 - Check the components: Hardware > Driver > Firmware
+				1) Check if Wireless adapter is present --> PRESENT
+					a) $: lshw -C network
+						i) List-hardware class network
+					b) Output> Network controller - Product: Wireless 8265 / 8275 is present
+				2) Check if the wireless driver is present
+					a) $: lsmod | grep iwlwifi
+						i) List module | search intel-wireless-wifi
+					b) &1> cfg80211 1443600 1 iwlwifi
+						i) Configuration 802.11 --> the core linux module wifi depends on
+				3) Check if the fireware is present
+					a) $: ls /lib/firmware | grep 8265
+					b) Output>
+						i) Iwlwifi-8265-34.ucode.zst
+						ii) Iwlwifi-8265-36.ucode.zst
+					c) $: dmesg | grep -i 'iwlwifi\|firmware'
+			iii. Phase 2 - Check if kernel loaded Driver > Firmware
+				1) Check if the kernel loaded iwlwifi module (driver)
+					a) $: sudo dmesg | grep 'iwlwifi' 
+					b) &1> 
+						i) $: Iwlwifi enabling device
+						ii) $: Iwlwifi probe with driver iwlwifi failed with error -110 //-100 = timeout
+				2) Check if the kernel loaded the firmware
+					a) $: dmesg | grep ucode
+				3) [Results] Both the module (driver) and the firmware has not been loaded by the kernel
+			iv. Phase 3 - Remove residual quirks from Windows
+				1) Check if the secure boot is on
+					a) $: mokutil --sb-state
+						i) Machine Owner Keys Utility
+						ii) UEFI features only allowing signed bootloaders, and modules to load, mokutil allows you to verify the keys
+					b) &1> Secure boot disabled
+				2) Perform an Embedded Controller Reset
+					a) [ELI5] - The Embedded Controller holds low-level hardware settings via electric charged state using flags. Holding the power button discharges the capacitors thereby forcing the Embedded Controller to reinitialize hardware on the next reboot
+					b) Power down > Remove the battery > Hold the power button down for 45 seconds
+					c) Reinstall the battery and power up
+					d) &1> RESOLVED
+Performed the embedded controller reset and the WIFI adapter now works!
