@@ -143,6 +143,17 @@ lsof | grep "utun"
 VPN: the quickest solution for internet connectivity issues is to get a new ip address via ipconfig BOOTP -> DHCP
 @#
 
+#@ networking.tool
+#t networking network ip addr ifconfig ipconfig
+#d 
+# list all ip addresses on the network
+arp -a
+
+# add virtual adapter and tag with vlan id 52
+ip link add link enp0s25 name enp0s25.52 type vlan id 52
+#n
+@#
+
 #@ ssh.tool
 #t key keygen ssh agent
 #d create key & add to keyring
