@@ -170,10 +170,16 @@ ssh-keygen -t ed25519 -f <hostname>
 # if it is not running
 eval $(ssh-agent -s)
 
-# add the key to the keyring
 # macos:
+# set rules in $HOME/.ssh/config
+Host *
+	AddKeysToAgent yes
+	UseKeyChain yes
+	IdentityFile $HOME/.ssh/<private_key>
+# add to apple keyring
 ssh-add --apple-use-keychain $HOME/.ssh/<private_key>
-# linux: automatically adds key to keychain at login
+# make it persist with one use 
+git commit > git push
 
 # remote connect into headless server
 # check/start ssh system status
