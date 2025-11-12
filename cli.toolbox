@@ -166,10 +166,14 @@ sudo systemsetup -setremotelogin on
 # create a key
 ssh-keygen -t ed25519 -f <hostname>
 
-# bind the ssh-agent to the active shell
+# bind the ssh-agent to the active shell only
+# if it is not running
 eval $(ssh-agent -s)
+
 # add the key to the keyring
-ssh-add $HOME/.ssh/<private_key>
+# macos:
+ssh-add --apple-use-keychain $HOME/.ssh/<private_key>
+# linux: automatically adds key to keychain at login
 
 # remote connect into headless server
 # check/start ssh system status
