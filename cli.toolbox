@@ -165,6 +165,8 @@ sudo systemsetup -setremotelogin on
 
 # create a key
 ssh-keygen -t ed25519 -f <hostname>
+
+# bind the ssh-agent to the active shell
 eval $(ssh-agent -s)
 # add the key to the keyring
 ssh-add $HOME/.ssh/<private_key>
