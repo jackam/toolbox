@@ -176,8 +176,14 @@ Host *
 	AddKeysToAgent yes
 	UseKeyChain yes
 	IdentityFile $HOME/.ssh/<private_key>
-# add to apple keyring
+
+# add to apple keyring mac/linux
 ssh-add --apple-use-keychain $HOME/.ssh/<private_key>
+ssh-add $HOME/.ssh/<private_key>
+
+# show the key in keyring
+ssh-add -l
+
 # make it persist with one use 
 git commit > git push
 
